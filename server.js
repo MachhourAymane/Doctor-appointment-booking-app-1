@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const dbConfig = require("./config/dbConfig");
+const connectDB = require("./config/connectDB"); // Import the connection function
+
+// Initialize MongoDB connection
+connectDB();
+
 app.use(express.json());
 const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
@@ -19,7 +23,8 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client/build/index.html"));
   });
 }
+
 const port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => res.send("Hello World!"));
-app.listen(port, () => console.log(`Node Express Server Started at ${port}!`));
+app.listen(port, () => console.log(`Server started on port ${port}!`));
