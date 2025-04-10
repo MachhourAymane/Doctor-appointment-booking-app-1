@@ -1,42 +1,142 @@
+/* Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-*{
+/* Global Styles */
+* {
   font-family: 'Montserrat', sans-serif !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* antd override */
-input{
-  border-radius: 2px !important;
-  border: 1px solid rgba(128, 128, 128, 0.521) !important;
-  height: 40px !important;
+/* Main Container for Authentication */
+.authentication {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); /* Soft blue gradient for a modern look */
+  padding: 16px; /* Add padding for mobile */
 }
-input:focus , .ant-picker{
-  outline: none !important;
-  box-shadow: none !important;
-  border: 1px solid gray !important;
-}
-label{
-  font-size: 16px !important;
-  color: black !important;
-}
-.ant-form-item{
-  margin: 10px 0 !important;; 
-}
-.ant-picker-input input{
-  border: none !important;
-}
-.ant-picker{
-  border-radius: 2px !important;
-  border: 1px solid rgba(128, 128, 128, 0.521) !important;
-  height: 40px !important;
-}
-/* Common styling */
 
-.spinner-parent{
+/* Form Container */
+.authentication-form {
+  width: 100%;
+  max-width: 400px; /* Limit width on larger screens */
+  padding: 24px; /* Slightly reduced padding for mobile */
+  background-color: #ffffff; /* White background for the card */
+  border-radius: 16px; /* Larger rounded corners for a modern look */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Deeper shadow for a card effect */
+  transition: transform 0.3s ease;
+}
+
+.authentication-form:hover {
+  transform: translateY(-5px); /* Subtle lift on hover (for desktop) */
+}
+
+/* Card Title Styling */
+.authentication .card-title {
+  font-size: 1.25rem; /* Slightly smaller for mobile */
+  font-weight: bold;
+  color: #005555; /* Teal text for a medical theme */
+  background: linear-gradient(135deg, #BBDEFB 0%, #E3F2FD 100%); /* Light blue gradient */
+  padding: 12px 24px;
+  border-radius: 12px; /* More rounded corners */
+  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Input Fields */
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px; /* More rounded corners */
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Softer border */
+  background-color: #F8F9FA;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #005555; /* Teal border on focus */
+  box-shadow: 0 0 8px rgba(0, 85, 85, 0.3); /* Teal glow on focus */
+}
+
+/* Label Styling */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #005555; /* Teal link color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #013737; /* Darker teal on hover */
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-button {
+  width: 100%;
+  padding: 14px 16px; /* Larger padding for touch */
+  margin-top: 16px;
+  background: linear-gradient(135deg, #005555 0%, #013737 100%); /* Teal gradient */
+  color: white;
+  border: none;
+  border-radius: 12px; /* More rounded corners */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 85, 85, 0.3); /* Teal shadow on hover */
+}
+
+/* Footer Links */
+.footer-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.anchor {
+  color: #005555;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.anchor:hover {
+  color: #013737;
+  text-decoration: underline;
+}
+
+/* General Text */
+.normal-text {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Spinner (Optional) */
+.spinner-parent {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.704);
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 0;
   left: 0;
@@ -44,83 +144,37 @@ label{
   height: 100%;
   z-index: 9999;
 }
-.spinner-border{
+
+.spinner-border {
   width: 5rem;
   height: 5rem;
   color: white !important;
 }
 
-.page-title{
-  font-size: 25px;
-  color: rgba(0, 0, 0, 0.833);
-  font-weight: bold;
-}
-.card-title{
-  font-size: 22px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.627);
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  .authentication-form {
+    padding: 20px; /* Further reduce padding for mobile */
+    border-radius: 12px; /* Slightly smaller radius for mobile */
+  }
 
-}
-.normal-text{
-  font-size: 1rem;
-}
-.card{
-  box-shadow: 0 0 2px rgb(189, 188, 188);
-  border-radius: 0 !important;
-}
-.primary-button{
-  background-color: #005555 !important;
-  border-color: #005555 !important;
-  height: 40px !important;
-  width: 100% !important;
-  color: white !important;
-  font-size: 16px !important;
-  width: max-content !important;
-}
-.full-width-button{
-  width: 100% !important;
-}
-p{
-  color: rgba(0, 0, 0, 0.673) !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
+  .authentication .card-title {
+    font-size: 1.1rem; /* Smaller title for mobile */
+    padding: 10px 20px;
+  }
 
-.anchor{
-  color: black !important;
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 16px !important;
-}
-.anchor:hover{
-  text-decoration: underline !important;
-}
+  input {
+    font-size: 14px; /* Smaller font for mobile */
+    padding: 10px 14px;
+  }
 
-.cursor-pointer{
-  cursor: pointer;
-}
+  .login-button {
+    padding: 12px 14px; /* Slightly smaller padding */
+    font-size: 14px;
+  }
 
-
-/* authentication pages */
-
-.authentication{
-   height: 100vh;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   background-color: #005555;
-}
-.authentication-form{
-  width: 400px;
-}
-
-.authentication .card-title{
-  font-size: 1.5rem;
-  font-weight: bold;
-  background-color: orangered;
-  color: white !important;
-  max-width: max-content !important;
-  padding: 7px 15px;
-  margin-left: -40px;
-  border-bottom-left-radius: 10px;
+  .forgot-password,
+  .anchor {
+    font-size: 12px; /* Smaller links for mobile */
+  }
 }

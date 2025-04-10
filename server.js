@@ -1,12 +1,17 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const cors = require("cors"); // Import cors package
 const connectDB = require("./config/connectDB"); // Import the connection function
 
 // Initialize MongoDB connection
 connectDB();
 
+app.use(cors()); // Enable CORS for all routes (default allows all origins)
+
+// Other middlewares and routes
 app.use(express.json());
+
 const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
 const doctorRoute = require("./routes/doctorsRoute");

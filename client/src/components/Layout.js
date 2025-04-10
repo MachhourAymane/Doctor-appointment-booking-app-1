@@ -15,9 +15,10 @@ function Layout({ children }) {
     { name: "Home", path: "/", icon: "ri-home-line" },
     { name: "Appointments", path: "/appointments", icon: "ri-file-list-line" },
     { name: "Apply Doctor", path: "/apply-doctor", icon: "ri-hospital-line" },
-    
+    { name: "Book Appointment", path:  `/book-appointment/${user?._id} `, icon: "ri-calendar-check-line" }, // Added
 
   ];
+  
 
   const doctorMenu = [
     { name: "Home", path: "/", icon: "ri-home-line" },
@@ -30,7 +31,6 @@ function Layout({ children }) {
     { name: "Home", path: "/", icon: "ri-home-line" },
     { name: "Users", path: "/admin/userslist", icon: "ri-user-line" },
     { name: "Doctors", path: "/admin/doctorslist", icon: "ri-user-star-line" },
-    { name: "Profile", path: "/profile", icon: "ri-user-line" },
   ];
 
   const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isDoctor ? doctorMenu : userMenu;

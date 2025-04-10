@@ -1,35 +1,38 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "axios"; // Import axios
 import Layout from "../components/Layout";
 import { Col, Row } from "antd";
-import Doctor from "../components/Doctor";
-import { useDispatch, useSelector } from "react-redux";
+// import Doctor from "../components/Doctor"; // Remove this if unused
+import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
 
 function Home() {
   const [doctors, setDoctors] = useState([]);
   const dispatch = useDispatch();
 
-  const getData = async () => {
-    try {
-      dispatch(showLoading());
-      const response = await axios.get("/api/user/get-all-approved-doctors", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
-      dispatch(hideLoading());
-      if (response.data.success) {
-        setDoctors(response.data.data);
-      }
-    } catch (error) {
-      dispatch(hideLoading());
-    }
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      try {
+        dispatch(showLoading());
+
+        // Directly set the full URL here
+        const response = await axios.get("http://localhost:5000/api/user/get-all-approved-doctors", {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
+
+        dispatch(hideLoading());
+        if (response.data.success) {
+          setDoctors(response.data.data);
+        }
+      } catch (error) {
+        dispatch(hideLoading());
+      }
+    };
+
     getData();
-  }, []);
+  }, []); // Empty dependency array, ensuring it runs only once
 
   // Styles for the Hero Section
   const heroSectionStyle = {

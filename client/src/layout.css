@@ -1,126 +1,188 @@
+/* Main Container */
 .main {
-    padding: 20px;
-  }
-  
-  .logo {
-    color: white;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .role {
-    color: white;
-    font-size: 14px;
-    margin-top: -20px;
-    text-align: center;
-  }
-  
+  padding: 20px;
+  background-color: #f8f9fa; /* Soft grayish-white for a calming effect */
+  min-height: 100vh;
+}
+
+/* Logo Styling */
+.logo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* Role Text */
+.role {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  text-align: center;
+  margin-top: -10px;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #005555;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar.closed {
+  left: -250px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ff4d4d;
+}
+
+/* Content Area */
+.content {
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+.content.shifted {
+  margin-left: 250px;
+}
+
+/* Header */
+.header {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+  background-color: #005555; /* Teal background to match the login form */
+  color: white; /* White text for contrast */
+  padding: 30px; /* Match the login form padding */
+  border-radius: 10px; /* Match the login form border-radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+  margin-bottom: 20px; /* Space below the banner */
+  text-align: center; /* Center the text */
+  font-size: 1.5rem; /* Match the login form title size */
+  font-weight: bold; /* Match the login form title weight */
+}
+
+/* Body */
+.body {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 82vh;
+  width: 100%;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+/* Menu */
+.menu {
+  margin-top: 30px;
+}
+
+.menu-item {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.menu-item a:hover {
+  color: white;
+}
+
+.menu-item i {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.active-menu-item {
+  color: white;
+  background-color: #013737;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Header Action Icon */
+.header-action-icon {
+  font-size: 24px;
+  color: #005555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.header-action-icon:hover {
+  color: #0d6efd;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
   .sidebar {
-    background-color: #005555;
-    border-radius: 5px;
-    box-shadow: 0 0 2px gray;
-    min-height: 100%;
     width: 250px;
-    position: fixed; /* Fixed positioning for smooth sliding */
-    top: 0;
-    left: -250px; /* Initially hidden off-screen */
-    transition: left 0.3s ease; /* Smooth transition */
-    z-index: 1000; /* Ensure it stays on top */
-    padding: 10px;
+    left: -250px;
   }
-  
-  .sidebar.open {
-    left: 0; /* Slide in */
-  }
-  
-  .sidebar.closed {
-    left: -250px; /* Slide out */
-  }
-  
-  .sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .close-btn {
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-  }
-  
+
   .content {
-    width: 100%;
-    height: 100%;
-    margin-left: 0; /* No margin since sidebar is hidden */
+    margin-left: 0;
   }
-  
-  .header {
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 2px gray;
-    margin-bottom: 20px;
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+  .content.shifted {
+    margin-left: 250px;
   }
-  
-  .body {
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 2px gray;
-    height: 82vh;
-    width: 100%;
-    padding: 15px;
-    overflow-x: scroll !important;
-  }
-  
-  .menu {
-    margin-top: 100px;
-    padding: 0 10px;
-  }
-  
-  .menu-item {
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu-item a {
-    color: rgba(255, 255, 255, 0.727);
-    text-decoration: none;
-    font-size: 18px;
-    padding: 0 10px;
-  }
-  
-  .menu-item i {
-    color: rgba(255, 255, 255, 0.716);
-    font-size: 18px;
-    margin: 0 15px;
-  }
-  
-  .active-menu-item {
-    color: white;
-    background-color: #013737;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
-  .header-action-icon {
-    font-size: 30px;
-    color: black !important;
-    cursor: pointer;
-    padding-left: 10px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .sidebar {
-      width: 250px; /* Same width as desktop */
-      left: -250px; /* Initially hidden */
-    }
-  
-    .content {
-      margin-left: 0; /* No margin since sidebar is hidden */
-    }
-  }
+}
